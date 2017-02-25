@@ -10,7 +10,7 @@
   "author": "Tushar Mudgal",
   "license": "ISC",
   "dependencies": {
-    "express": "4.14.1",
+    "request": "^2.79.0",
     "yargs": "6.6.0"
   }
 }
