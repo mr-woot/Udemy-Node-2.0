@@ -1,5 +1,3 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 var fetchNotes = () => {
@@ -27,6 +25,7 @@ var addNote = (title, body) => {
     if (duplicateNotes.length === 0) {
         notes.push(note);
         saveNotes(notes);
+        return note;
     }
 };
 

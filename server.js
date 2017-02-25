@@ -1,5 +1,3 @@
-console.log("Starting server.js");
-
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
@@ -7,12 +5,18 @@ const argv = require('yargs').argv;
 
 const notes = require('./notes');
 
-console.log('Yargs:', argv);
-
 var command = process.argv[2];
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    if (note) {
+        console.log('Note created successfully');
+        console.log('--');
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    } else {
+        console.log("Note title taken.");
+    }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
