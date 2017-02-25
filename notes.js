@@ -12,7 +12,7 @@ var fetchNotes = () => {
 };
 
 var saveNotes = (notes) => {
-
+    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 };
 
 var addNote = (title, body) => {
@@ -23,9 +23,10 @@ var addNote = (title, body) => {
     };
 
     var duplicateNotes = notes.filter((note) => note.title === title);
+
     if (duplicateNotes.length === 0) {
         notes.push(note);
-        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+        saveNotes(notes);
     }
 };
 
