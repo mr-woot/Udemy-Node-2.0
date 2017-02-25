@@ -20,5 +20,5 @@ if (command === 'add') {
 } else if (command === 'remove') {
     notes.removeNote(argv.title);
 } else {
-    console.log('Wrong argument'); 
+    console.log('Wrong argument');
 }
