@@ -5,13 +5,8 @@ const os = require('os');
 const _ = require('lodash');
 const notes = require('./notes');
 
-var user = os.userInfo();
-
-fs.appendFile('file.txt', `Hola ${user.username}..! `, (err) => {
-    if (err) {
-        console.log(err);
-    }
-});
+var filteredArray = _.uniq([1,2,3,4,1,1,2,1,4,5,4,4,3,3]);
+console.log(filteredArray);
 
 
 
@@ -20,7 +15,7 @@ fs.appendFile('file.txt', `Hola ${user.username}..! `, (err) => {
 
 
 
-
+ 
 
 
 
