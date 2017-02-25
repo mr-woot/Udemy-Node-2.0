@@ -1,4 +1,5 @@
 const fs = require('fs');
+const _ = require('lodash');
 
 var fetchNotes = () => {
     try {
@@ -30,15 +31,21 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-    console.log("Getting all notes");
+    var notes = fetchNotes();
+    return notes;
 };
 
 var readNote = (title) => {
-    console.log(`Reading note: ${title}`);
+    var notes = fetchNotes();
+    var filteredNote = notes.filter((note) => note.title === title);
+    return filteredNote[0];
 };
 
 var removeNote = (title) => {
-    console.log(`Removing note: ${title}`);
+    var notes = fetchNotes();
+    var filteredNotes = notes.filter((note) => note.title !== title);
+    saveNotes(filteredNotes);
+    return notes.length !== filteredNotes.length;
 };
 
 module.exports = {

@@ -18,11 +18,24 @@ if (command === 'add') {
         console.log("Note title taken.");
     }
 } else if (command === 'list') {
-    notes.getAll();
+    var allNotes = notes.getAll();
+    allNotes.forEach(function(el) {
+        console.log(`\nTitle: ${el.title}`);
+        console.log(`Body: ${el.body}\n`);
+    }, this);
 } else if (command === 'read') {
-    notes.readNote(argv.title);
+    var note = notes.readNote(argv.title);
+    if (note !== undefined) {
+        console.log(`Title: ${note.title}\nBody: ${note.body}`);
+    } else {
+        console.log('Note doesn\'t exist');
+    }
 } else if (command === 'remove') {
-    notes.removeNote(argv.title);
+    if (notes.removeNote(argv.title)) {
+        console.log(`Note removed: ${argv.title}`);
+    } else {
+        console.log('Note doesn\'t exist.');
+    }
 } else {
     console.log('Wrong argument');
 }
