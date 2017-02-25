@@ -1,7 +1,38 @@
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
-const argv = require('yargs').argv;
+const yargs = require('yargs');
+
+const argv = yargs
+                .command('add', 'Add a new note', {
+                    title: {
+                        describe: 'Title of note',
+                        demand: true,
+                        alias: 't'
+                    },
+                    body: {
+                        describe: 'Body of note',
+                        demand: true,
+                        alias: 'b'
+                    }
+                })
+                .command('remove', 'Remove a note', {
+                    title: {
+                        describe: 'Title of note to be deleted',
+                        demand: true,
+                        alias: 't'
+                    }
+                })
+                .command('list', 'List all notes')
+                .command('read', 'Read a specific note', {
+                    title: {
+                        describe: 'Title of note to be read',
+                        demand: true,
+                        alias: 't'
+                    }
+                })
+                .help()
+                .argv;
 
 const notes = require('./notes');
 
@@ -18,11 +49,23 @@ if (command === 'add') {
         console.log("Note title taken.");
     }
 } else if (command === 'list') {
-    notes.getAll();
+    var allNotes = notes.getAll();
+    allNotes.forEach(function(el) {
+        notes.logNote(el.title, el.body);
+    }, this);
 } else if (command === 'read') {
-    notes.readNote(argv.title);
+    var note = notes.readNote(argv.title);
+    if (note !== undefined) {
+        notes.logNote(note.title, note.body);
+    } else {
+        console.log('Note doesn\'t exist');
+    }
 } else if (command === 'remove') {
-    notes.removeNote(argv.title);
+    if (notes.removeNote(argv.title)) {
+        console.log(`Note removed: ${argv.title}`);
+    } else {
+        console.log('Note doesn\'t exist.');
+    }
 } else {
     console.log('Wrong argument');
 }
