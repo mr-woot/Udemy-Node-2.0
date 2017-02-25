@@ -1,7 +1,38 @@
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
-const argv = require('yargs').argv;
+const yargs = require('yargs');
+
+const argv = yargs
+                .command('add', 'Add a new note', {
+                    title: {
+                        describe: 'Title of note',
+                        demand: true,
+                        alias: 't'
+                    },
+                    body: {
+                        describe: 'Body of note',
+                        demand: true,
+                        alias: 'b'
+                    }
+                })
+                .command('remove', 'Remove a note', {
+                    title: {
+                        describe: 'Title of note to be deleted',
+                        demand: true,
+                        alias: 't'
+                    }
+                })
+                .command('list', 'List all notes')
+                .command('read', 'Read a specific note', {
+                    title: {
+                        describe: 'Title of note to be read',
+                        demand: true,
+                        alias: 't'
+                    }
+                })
+                .help()
+                .argv;
 
 const notes = require('./notes');
 
