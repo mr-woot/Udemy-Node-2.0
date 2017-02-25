@@ -20,13 +20,12 @@ if (command === 'add') {
 } else if (command === 'list') {
     var allNotes = notes.getAll();
     allNotes.forEach(function(el) {
-        console.log(`\nTitle: ${el.title}`);
-        console.log(`Body: ${el.body}\n`);
+        notes.logNote(el.title, el.body);
     }, this);
 } else if (command === 'read') {
     var note = notes.readNote(argv.title);
     if (note !== undefined) {
-        console.log(`Title: ${note.title}\nBody: ${note.body}`);
+        notes.logNote(note.title, note.body);
     } else {
         console.log('Note doesn\'t exist');
     }
