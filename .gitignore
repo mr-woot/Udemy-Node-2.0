@@ -1,5 +1,4 @@
 node_modules/
 .vscode/
 playground/
-
-/notes-data.json
+notes-data.json
