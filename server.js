@@ -3,10 +3,9 @@ console.log("Starting server.js");
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
+
 const notes = require('./notes');
 
-var filteredArray = _.uniq([1,2,3,4,1,1,2,1,4,5,4,4,3,3]);
-console.log(filteredArray);
 
 
 
