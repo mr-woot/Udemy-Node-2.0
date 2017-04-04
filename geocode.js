@@ -3,10 +3,9 @@ const json = require("prettyjson");
  
 module.exports = {
     geocodeAddress: (address, callback) => {
-        let encodedAddress = encodeURIComponent(address);
         let uri = "https://maps.googleapis.com/maps/api/geocode/json";
         let queryParams = {
-            address: encodedAddress
+            address: address
         };
 
         rp.makeRequest({}, uri, queryParams, "GET")
