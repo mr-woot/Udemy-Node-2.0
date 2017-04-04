@@ -13,8 +13,10 @@ const argv = yargs
                 .help()
                 .argv;
 
+let address = argv["a"];
+
 request({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&',
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&`,
     json: true
 }, (err, res, body) => {
     console.log(`Address: ${body.results[0].formatted_address}`);
