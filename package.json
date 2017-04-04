@@ -2,15 +2,19 @@
   "name": "udemy-node",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "Tushar Mudgal",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.79.0",
-    "yargs": "6.6.0"
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "prettyjson": "^1.2.1"
   }
 }
